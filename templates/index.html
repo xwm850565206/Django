@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>企业数据的无监督分类系统</title>
+    <link rel="stylesheet" href="{% static '../static/css/index.css' %}">
+    <script src="{% static '../static/js/index.js' %}"></script>
+</head>
+
+<body>
+<div style="display: flex;flex-direction: column;align-items: center;">
+    <h1 style="color: #42474f">企业数据的无监督分类系统</h1>
+    <br>
+    <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+        <p class="name_search" id="search_mode1" onclick="searchModeChange(this.id)">名称检索分类</p>
+        <p class="condition_search" id="search_mode2" onclick="searchModeChange(this.id)">条件检索分类</p>
+    </div>
+    <br>
+
+    <div id="default_form_block">
+        <form class="default_form" action="/namesubmit" method="post">
+            {% csrf_token %}
+            <input type="text" name="company_name" class="input_name" placeholder="输入搜索">
+            <input type="submit" class="input_submit" value="提交">
+        </form>
+    </div>
+    <div>{{ result }}</div>
+
+    <div id="condition_form_block" style="display: none;">
+        <form class="condition_form" action="/conditionsubmit" method="post">
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-bottom: 5px;">
+                    <p class="title_text">公司信用</p>
+                    <img class="arrow" id="arrow1" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block1" style="display: block; width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">产品抽查信息:</p>
+                        <input type="text" name="product_check_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">守合同重信用企业:</p>
+                        <input type="radio" name="honest" value="true" checked>是&nbsp
+                        <input type="radio" name="honest" value="false">否
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业信用等级:</p>
+                        <select name="credit_level">
+                            <option value="N+">N+</option>
+                            <option value="B-">B-</option>
+                            <option value="A">A</option>
+                            <option value="C">C</option>
+                            <option value="N">N</option>
+                            <option value="A-">A-</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">列入失信名单:</p>
+                        <input type="radio" name="dishonest_list" value="true" >是&nbsp
+                        <input type="radio" name="dishonest_list" value="false" checked>否
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">工商部失信企业:</p>
+                        <input type="radio" name="AIC_dishonest_list" value="true" >是&nbsp
+                        <input type="radio" name="AIC_dishonest_list" value="false" checked>否
+                    </div>
+                </div>
+            </div>
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-top: 5px;margin-bottom: 5px;">
+                    <p class="title_text">公司技术</p>
+                    <img class="arrow" id="arrow2" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block2" style="display: none;width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">商标数据:</p>
+                        <input type="text" name="brand_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">软件著作权数据:</p>
+                        <input type="text" name="software_copyright_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">专利数据:</p>
+                        <input type="text" name="patent_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">域名数据:</p>
+                        <input type="text" name="domain_name_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">济南市省级市级企业技术中心名录:</p>
+                        <input type="radio" name="jinan_company_list" value="true" checked>是
+                        <input type="radio" name="jinan_company_list" value="false" >否
+                    </div>
+                </div>
+            </div>
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-top: 5px;margin-bottom: 5px;">
+                    <p class="title_text">公司构成</p>
+                    <img class="arrow" id="arrow3" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block3" style="display: none; width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业(机构)类型:</p>
+                        <select name="company_type">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业(机构)类型:</p>
+                        <select name="company_type2">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">行业门类:</p>
+                        <select name="industry_type">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业股东/自然人出资信息:</p>
+                        <input type="text" name="investment_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">单位参保信息查询:</p>
+                        <input type="text" name="ensure_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">注册资本:</p>
+                        <input type="text" name="registered_capital_info" placeholder="请输入">
+                        <p style="margin-right: 10px;margin-left: 10px;">币种:</p>
+                        <select name="money_type">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">年报对外投资:</p>
+                        <input type="text" name="invest_out_info" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-top: 5px;margin-bottom: 5px;">
+                    <p class="title_text">公司规模</p>
+                    <img class="arrow" id="arrow4" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block4" style="display: none; width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">注册资本:</p>
+                        <input type="text" name="registered_capital_info2" placeholder="请输入">
+                        <p style="margin-right: 10px;margin-left: 10px;">币种:</p>
+                        <select name="money_type2">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">从业人数:</p>
+                        <input type="text" name="invest_out_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">从业人数:</p>
+                        <input type="text" name="employee_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">成立日期:</p>
+                        <input type="date" name="establish_date">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">分支机构数:</p>
+                        <input type="text" name="sub_institution_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">网店个数:</p>
+                        <input type="text" name="online_shop_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">招聘记录条数:</p>
+                        <input type="text" name="employ_record_num" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-top: 5px;margin-bottom: 5px;">
+                    <p class="title_text">公司实力</p>
+                    <img class="arrow" id="arrow5" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block5" style="display: none; width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">中标次数:</p>
+                        <input type="text" name="selected_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">招聘记录条数:</p>
+                        <input type="text" name="employ_record_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">是否为驰名商标:</p>
+                        <input type="radio" name="is_famous_brand" value="true" checked>是
+                        <input type="radio" name="is_famous_brand" value="false" >否
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">是否为著名商标:</p>
+                        <input type="radio" name="is_famous_brand2" value="true" checked>是
+                        <input type="radio" name="is_famous_brand2" value="false" >否
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业产品被抽查信息:</p>
+                        <input type="text" name="product_checked_info" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="condition_sub_block">
+                <div class="block_title" style="margin-top: 5px;margin-bottom: 5px;">
+                    <p class="title_text">公司稳定</p>
+                    <img class="arrow" id="arrow6" onclick="subBlockShow(this.id)"
+                         src="{% static '../static/image/List.png' %}">
+                </div>
+                <div id="sub_block6" style="display: none; width: 75%;">
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">变更次数:</p>
+                        <input type="text" name="change_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">企业年报对外担保:</p>
+                        <input type="text" name="annual_guarantee_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">司法风险-开庭公告数据:</p>
+                        <input type="text" name="court_announcement_num" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">经营风险-经营异常:</p>
+                        <input type="text" name="abnormal_manage_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">经营风险-行政处罚:</p>
+                        <input type="text" name="administrative_punishment" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">经营风险-股权出质:</p>
+                        <input type="text" name="equity_pledged" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">经营风险-欠税公告:</p>
+                        <input type="text" name="owe_taxes_info" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">异常名单:</p>
+                        <input type="text" name="abnormal_list" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">年报社保信息-参保状态:</p>
+                        <input type="text" name="social_ensure_status" placeholder="请输入">
+                    </div>
+                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
+                        <p style="margin-right: 10px;">年报社保信息-五险一金欠税额:</p>
+                        <input type="text" name="social_ensure_owe_num" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="input_submit2" value="提交">
+        </form>
+    </div>
+    <h4 class="statement" style="font-size: 18px; text-align:center;margin-top: 30px;">Designed by Creeper
+        in NWPU</h4>
+
+</div>
+
+</body>
+<script language="JavaScript">
+    function subBlockShow(id) {
+        let id_str = id.charAt(id.length - 1);
+        let sub_block = document.getElementById("sub_block" + id_str);
+        let status = sub_block.style.display;
+        if (status === "block") {
+            sub_block.style.display = "none";
+        } else if (status === "none")
+            sub_block.style.display = "block";
+        else {
+            sub_block.style.display = "block";
+        }
+    }
+</script>
+</html>
