@@ -8,10 +8,10 @@ class CompanyInfoLoader(TableLoader):
     将company_baseinfo中的资金进行预处理和汇率转换
     """
 
-    def __init__(self, prefix=''):
+    def __init__(self):
         super().__init__()
         self.load_name = 'company_baseinfo'
-        self.data_filter = DataFilter(is_init_dic=True, prefix=prefix)
+        self.data_filter = DataFilter.getInstance()
         self.currency = ['人民币', '美元', '欧元']
 
     def load(self, table):

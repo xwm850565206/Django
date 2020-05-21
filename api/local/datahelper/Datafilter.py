@@ -18,37 +18,41 @@ class DataFilter:
         else:
             self.init_dic = None
 
-    def normalization(self, data, segment):
+    def normalization(self, data, segment, minn=None, maxn=None):
+        _minn = minn
+        _maxn = maxn
 
-        _range = np.max(data) - np.min(data)
+        if _minn is None:
+            _minn = np.min(data)
+        if _maxn is None:
+            _maxn = np.max(data)
 
-        # if not hasattr(self, 'max'):
-        #     setattr(self, 'max', dict())
-        #     setattr(self, 'min', dict())
+        _range = _maxn - _minn
 
-        self.max[segment] = np.max(data)
-        self.min[segment] = np.min(data)
+        self.max[segment] = _maxn
+        self.min[segment] = _minn
 
         if _range == 0:
             return np.ones(data.shape)
         else:
-            return (data - np.min(data)) / _range
+            return (data - _minn) / _range
 
-    def standardization(self, data, segment):
-        mu = np.mean(data, axis=0)
-        sigma = np.std(data, axis=0)
+    def standardization(self, data, segment, mu=None, sigma=None):
+        _mu = mu
+        _sigma = sigma
 
-        # if not hasattr(self, 'max'):
-        #     setattr(self, 'mu', dict())
-        #     setattr(self, 'sigma', dict())
+        if _mu is None:
+            _mu = np.mean(data, axis=0)
+        if _sigma is None:
+            _sigma = np.std(data, axis=0)
 
-        self.mu[segment] = mu
-        self.sigma[segment] = sigma
+        self.mu[segment] = _mu
+        self.sigma[segment] = _sigma
 
-        if sigma == 0:
+        if _sigma == 0:
             return np.ones(data.shape)
         else:
-            return (data - mu) / sigma
+            return (data - _mu) / _sigma
 
     def get_weight(self, segment):
 
@@ -78,6 +82,27 @@ class DataFilter:
                 raw_data = self.standardization(raw_data, segment)
             elif use_func == 'minmaxscale':
                 raw_data = self.normalization(raw_data, segment)
+            else:
+                raise ValueError("UnSupport function: " + use_func)
+
+            raw_data = raw_data * self.get_weight(segment)
+            tmp.append(raw_data)
+
+        tmp = np.array(tmp)
+        tmp = tmp.T
+        return tmp
+
+    def filter_simple_data(self, data, segment_list, use_func='standard'):
+        tmp = []
+        for i, segment in enumerate(segment_list):
+            raw_data = data[:, i]
+            raw_data = np.array(raw_data)
+            if use_func == 'standard':
+                raw_data = self.standardization(raw_data, segment, self.mu[segment], self.sigma[segment])
+            elif use_func == 'minmaxscale':
+                raw_data = self.normalization(raw_data, segment, self.min[segment], self.max[segment])
+            else:
+                raise ValueError("UnSupport function: " + use_func)
 
             raw_data = raw_data * self.get_weight(segment)
             tmp.append(raw_data)
@@ -133,8 +158,14 @@ class DataFilter:
         weight_dic.update(Utils.target_stable_weight)
         return weight_dic
 
+    datafilter = None
 
-if __name__ == '__main__':
-    datafilter = DataFilter(is_init_dic=True)
+    @staticmethod
+    def createInstance(is_init_dic, prefix):
+        DataFilter.datafilter = DataFilter(is_init_dic=is_init_dic, prefix=prefix)
+        return DataFilter.datafilter
 
-    print(datafilter.init_dic)
+    @staticmethod
+    def getInstance():
+        return DataFilter.datafilter
+

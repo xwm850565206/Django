@@ -2,19 +2,30 @@ from api.local.datahelper import Utils
 from api.local.datahelper.Dataloader import DataLoader
 import api.network.utils.StaticTable as st
 import json
+import numpy as np
+
 
 
 class DataMapHelper:
 
+    data_map_helper = None
+
     def __init__(self):
         self.belongs = st.belong_list
         self.belong_dic = st.belong_dic
-        self.data_loader = DataLoader(is_init_dic=True, prefix=st.raw_data_path)
+
+        try:
+            self.data_loader = DataLoader.getInstance()
+        except ValueError:
+            self.data_loader = DataLoader.createInstance(is_init_dic=True, prefix=st.raw_data_path, filter_func='minmaxscale')
+
         self.not_origin_segment_info = self.__generate_not_origin_segment_info()
 
     @staticmethod
     def getInstance():
-        return data_map_helper
+        if DataMapHelper.data_map_helper is None:
+            DataMapHelper.data_map_helper = DataMapHelper()
+        return DataMapHelper.data_map_helper
 
     def getBelongFromIndex(self, index):
         return self.belongs[index]
@@ -23,11 +34,11 @@ class DataMapHelper:
 
         for i, key in enumerate(self.belong_dic):
             try:
-                index = self.belong_dic[key].index(segment_name)
-                return index
+                _ = self.belong_dic[key].index(segment_name)
+                return i
             except ValueError:
                 continue
-        return -1
+        raise ValueError("cannot find " + segment_name + " belong")
 
     def getAllSegmentName(self):
         res = []
@@ -53,6 +64,26 @@ class DataMapHelper:
         if segment_name in self.data_loader.data_filter.init_dic:
             return self.data_loader.data_filter.init_dic[segment_name]
 
+    def rescaled_data(self, data_dic, usefunc):
+
+        # if usefunc == 'standard':
+        #     for key in data_dic:
+        #         sigma = self.data_loader.data_filter.sigma[key]
+        #         mu = self.data_loader.data_filter.mu[key]
+        #         # data_dic[key] = np.squeeze((np.array(data_dic[key] - mu)) / sigma) if sigma != 0 else np.squeeze(np.ones(len(data_dic[key])))
+        #         data_dic[key] = (data_dic[key] - mu) / sigma if sigma != 0 else np.squeeze(
+        #             np.ones(len(data_dic[key])))
+        #     return data_dic
+        # else:
+        #     raise ValueError(usefunc + 'is not support now')
+        for key in data_dic:
+            data_dic[key] = np.squeeze(self
+                                       .data_loader
+                                       .data_filter
+                                       .filter_simple_data(np.array([data_dic[key]])
+                                                           .reshape((1, -1)), [key], usefunc)).tolist()
+        return data_dic
+
     def alreadyInDataBase(self, company_name):
         try:
             self.data_loader.company_list.index(company_name)
@@ -76,8 +107,6 @@ class DataMapHelper:
 
         return not_origin_segment_info
 
-
-data_map_helper = DataMapHelper()
 
 if __name__ == '__main__':
     """

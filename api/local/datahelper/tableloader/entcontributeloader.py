@@ -7,10 +7,10 @@ class EntContributeLoader(TableLoader):
     返回的是公司的每种股资类型以及占股比例
     """
 
-    def __init__(self, prefix=''):
+    def __init__(self):
         super().__init__()
         self.load_name = 'ent_contribution'
-        self.datafilter = DataFilter(is_init_dic=True, prefix=prefix)
+        self.datafilter = DataFilter.getInstance()
 
     def load(self, table):
 

@@ -19,14 +19,16 @@ from api.local.datahelper.tableloader.tableloader import TableLoader
 
 class DataLoader:
 
+    data_loader = None  # instance
+
     def __init__(self, is_init_dic, prefix='', load_set=None, filter_func='standard'):
         self.is_init_dic = is_init_dic
 
         self.data_info = Datainfo.DataInfo(prefix)
-        self.data_filter = Datafilter.DataFilter(is_init_dic, prefix=prefix)
+        self.data_filter = Datafilter.DataFilter.createInstance(is_init_dic, prefix=prefix)
         self.loader = [
             TableLoader(),  # 默认的装载器
-            CompanyInfoLoader(prefix=prefix), ChangeInfoLoader(), EntContributeLoader(prefix=prefix),
+            CompanyInfoLoader(), ChangeInfoLoader(), EntContributeLoader(),
             EntInsuranceLoader(), JnCreditInfoLoader(), JnTechCenterLoader(),
             JusticeDeclareLoader(), QualityCheckLoader()
         ]
@@ -44,8 +46,6 @@ class DataLoader:
         self.segment_length = len(self.segment_list)
         self.shape = (len(self.company_list), self.segment_length)
         print("总数据形状为:", self.shape)
-
-
 
     def load(self, file_set=None):
 
@@ -211,6 +211,17 @@ class DataLoader:
                 for i, data in enumerate(tmp):
                     data_dic[segment_name[i]] = data
         return data_dic
+
+    @staticmethod
+    def createInstance(is_init_dic, prefix, filter_func):
+        DataLoader.data_loader = DataLoader(is_init_dic=is_init_dic, prefix=prefix, filter_func=filter_func)
+        return DataLoader.data_loader
+
+    @staticmethod
+    def getInstance():
+        if DataLoader.data_loader is None:
+            raise ValueError("instance not create yet")
+        return DataLoader.data_loader
 
 
 if __name__ == '__main__':

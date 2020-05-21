@@ -23,7 +23,7 @@ class IAnswer:
         根据传入的数据为公司打上标签
         :param data_dic: 字典，key为字段名，value为字段名对应的数据，value可能是一个list
         :param company_name: 公司名称，用于检索是否是已在数据库的公司，没有输入就为null
-        :return: 一个list，按照层次序号返回的标签信息
+        :return: 一个dict，{key, value}, key是层次名, value是标签信息
         """
         raise NotImplementedError
 
@@ -48,5 +48,13 @@ class IAnswer:
         得到这个字段所有的输入
         :param segment_name: 字段名称
         :return: 一个set，这个字段的所有输入
+        """
+        raise NotImplementedError
+
+    @staticmethod
+    def getInstance():
+        """
+        使用这个方法来创建此类
+        :return: 类的实例
         """
         raise NotImplementedError

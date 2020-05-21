@@ -34,7 +34,7 @@ class FCMPoint:
         return FCMPoint(data_dic['cluster'], data_dic['vectors'], data_dic['segments'], data_dic['vector_to_label'])
 
     @staticmethod
-    def distance(self, veca, vecb):
+    def distance(veca, vecb):
         """
         binary 类型的字段还没考虑
         :param self:
@@ -42,6 +42,7 @@ class FCMPoint:
         :param vecb:
         :return:
         """
+
         assert len(veca) == len(vecb)
 
         dis = 0
@@ -52,18 +53,23 @@ class FCMPoint:
     def getLabel(self, data):
         """
         得到对应的标签
-        :param data:形状是[{key, data}, {key, dadta}, ...]
+        :param data:形状是[[key, data], [key, data], ...]
         :return: 标签
         """
 
         label_index = -1
         min_dis = 0x3f3f3f3f
-        for key in data:
-            index = self.segments.index(key)
-            dis = self.distance(data[key], self.vectors[index])
+        for cluster in range(self.cluster):
+            vec = [0]*len(self.vectors[cluster])
+            for pair in data:
+                key = pair[0]
+                index = self.segments.index(key)
+                vec[index] = pair[1]
+            dis = self.distance(vec, self.vectors[cluster])
+
             if dis < min_dis:
                 min_dis = dis
-                label_index = index
+                label_index = cluster
 
         assert label_index != -1
 
