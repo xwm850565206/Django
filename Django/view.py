@@ -18,4 +18,7 @@ def name_submit(request):
 
 def condition_submit(request):
     # 在此处拿到条件检索的输入 进行相关检索分类
+    check_info = request.POST['product_check_info']
+    print("============", check_info, "==================")
+    return render(request, "index.html")
     pass

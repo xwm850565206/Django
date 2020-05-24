@@ -29,6 +29,7 @@
 
     <div id="condition_form_block" style="display: none;">
         <form class="condition_form" action="/conditionsubmit" method="post">
+            {% csrf_token %}
             <div class="condition_sub_block">
                 <div class="block_title" style="margin-bottom: 5px;">
                     <p class="title_text">公司信用</p>
@@ -37,8 +38,9 @@
                 </div>
                 <div id="sub_block1" style="display: block; width: 75%;">
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">产品抽查信息:</p>
-                        <input type="text" name="product_check_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">产品抽查通过率%:</p>
+                        <input type="number" name="product_check_info" placeholder="请输入">
+                        <p style="margin-left: 10px;color: #ffdd6f;">(示例:80%则输入80)</p>
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">守合同重信用企业:</p>
@@ -76,25 +78,27 @@
                 </div>
                 <div id="sub_block2" style="display: none;width: 75%;">
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">商标数据:</p>
-                        <input type="text" name="brand_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">商标数量:</p>
+                        <input type="number" name="brand_info" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">软件著作权数据:</p>
-                        <input type="text" name="software_copyright_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">软件著作权数量:</p>
+                        <input type="number" name="software_copyright_info" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">专利数据:</p>
-                        <input type="text" name="patent_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">专利数量:</p>
+                        <input type="number" name="patent_info" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">域名数据:</p>
-                        <input type="text" name="domain_name_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">域名数量:</p>
+                        <input type="number" name="domain_name_info" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">济南市省级市级企业技术中心名录:</p>
-                        <input type="radio" name="jinan_company_list" value="true" checked>是
-                        <input type="radio" name="jinan_company_list" value="false" >否
+                        <select name="jinan_company_list">
+                            <option value="level_province">省级</option>
+                            <option value="level_city">市级</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -136,16 +140,17 @@
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">注册资本:</p>
-                        <input type="text" name="registered_capital_info" placeholder="请输入">
+                        <input type="number" name="registered_capital_info" placeholder="请输入">
                         <p style="margin-right: 10px;margin-left: 10px;">币种:</p>
                         <select name="money_type">
-                            <option value="A">A</option>
-                            <option value="B">B</option>
+                            <option value="money_rmb">人民币</option>
+                            <option value="money_dollar">美元</option>
+                            <option value="money_euro">欧元</option>
                         </select>
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">年报对外投资:</p>
-                        <input type="text" name="invest_out_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">年报对外投资(人民币):</p>
+                        <input type="number" name="invest_out_info" placeholder="请输入">
                     </div>
                 </div>
             </div>
@@ -161,17 +166,14 @@
                         <input type="text" name="registered_capital_info2" placeholder="请输入">
                         <p style="margin-right: 10px;margin-left: 10px;">币种:</p>
                         <select name="money_type2">
-                            <option value="A">A</option>
-                            <option value="B">B</option>
+                            <option value="money2_rmb">人民币</option>
+                            <option value="money2_dollar">美元</option>
+                            <option value="money2_euro">欧元</option>
                         </select>
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">从业人数:</p>
-                        <input type="text" name="invest_out_info" placeholder="请输入">
-                    </div>
-                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">从业人数:</p>
-                        <input type="text" name="employee_num" placeholder="请输入">
+                        <input type="number" name="employee_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">成立日期:</p>
@@ -179,15 +181,15 @@
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">分支机构数:</p>
-                        <input type="text" name="sub_institution_num" placeholder="请输入">
+                        <input type="number" name="sub_institution_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">网店个数:</p>
-                        <input type="text" name="online_shop_num" placeholder="请输入">
+                        <input type="number" name="online_shop_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">招聘记录条数:</p>
-                        <input type="text" name="employ_record_num" placeholder="请输入">
+                        <input type="number" name="employ_record_num" placeholder="请输入">
                     </div>
                 </div>
             </div>
@@ -200,11 +202,11 @@
                 <div id="sub_block5" style="display: none; width: 75%;">
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">中标次数:</p>
-                        <input type="text" name="selected_num" placeholder="请输入">
+                        <input type="number" name="selected_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">招聘记录条数:</p>
-                        <input type="text" name="employ_record_num" placeholder="请输入">
+                        <input type="number" name="employ_record_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">是否为驰名商标:</p>
@@ -217,8 +219,9 @@
                         <input type="radio" name="is_famous_brand2" value="false" >否
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">企业产品被抽查信息:</p>
-                        <input type="text" name="product_checked_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">产品抽查通过率%:</p>
+                        <input type="number" name="product_check_info2" placeholder="请输入">
+                        <p style="margin-left: 10px;color: blanchedalmond;">(示例:80%则输入80)</p>
                     </div>
                 </div>
             </div>
@@ -231,43 +234,63 @@
                 <div id="sub_block6" style="display: none; width: 75%;">
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">变更次数:</p>
-                        <input type="text" name="change_num" placeholder="请输入">
+                        <input type="number" name="change_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">企业年报对外担保:</p>
-                        <input type="text" name="annual_guarantee_num" placeholder="请输入">
-                    </div>
-                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">司法风险-开庭公告数据:</p>
-                        <input type="text" name="court_announcement_num" placeholder="请输入">
+                        <p style="margin-right: 10px;">司法风险-开庭公告数据(被告次数):</p>
+                        <input type="number" name="court_announcement_num" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
                         <p style="margin-right: 10px;">经营风险-经营异常:</p>
-                        <input type="text" name="abnormal_manage_info" placeholder="请输入">
+                        <input type="radio" name="abnormal_manage_info" value="true" checked>是
+                        <input type="radio" name="abnormal_manage_info" value="false" >否
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">经营风险-行政处罚:</p>
-                        <input type="text" name="administrative_punishment" placeholder="请输入">
+                        <p style="margin-right: 10px;">经营风险-行政处罚(次数):</p>
+                        <input type="number" name="administrative_punishment" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">经营风险-股权出质:</p>
-                        <input type="text" name="equity_pledged" placeholder="请输入">
+                        <p style="margin-right: 10px;">经营风险-股权出质(次数):</p>
+                        <input type="number" name="equity_pledged" placeholder="请输入">
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">经营风险-欠税公告:</p>
-                        <input type="text" name="owe_taxes_info" placeholder="请输入">
+                        <p style="margin-right: 10px;">经营风险-欠税额:</p>
+                        <input type="number" name="owe_taxes_info" placeholder="请输入">
+                        <p style="margin-right: 10px;margin-left: 10px;">币种:</p>
+                        <select name="money_type_taxes">
+                            <option value="money_taxes_rmb">人民币</option>
+                            <option value="money_taxes_dollar">美元</option>
+                            <option value="money_taxes_euro">欧元</option>
+                        </select>
                     </div>
                     <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">异常名单:</p>
-                        <input type="text" name="abnormal_list" placeholder="请输入">
+                        <p style="margin-right: 10px;">异常名单(异常次数):</p>
+                        <input type="number" name="abnormal_list" placeholder="请输入">
                     </div>
-                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">年报社保信息-参保状态:</p>
-                        <input type="text" name="social_ensure_status" placeholder="请输入">
-                    </div>
-                    <div style="display: flex;flex-direction: row;width: 100%;height: 30px;align-items: center;">
-                        <p style="margin-right: 10px;">年报社保信息-五险一金欠税额:</p>
-                        <input type="text" name="social_ensure_owe_num" placeholder="请输入">
+                    <div style="display: flex;flex-direction: row;width: 100%;align-items: center;">
+                        <p style="margin-right: 10px;font-weight: bold;">五险一金欠税额:</p>
+                        <div style="display: flex;flex-direction: column;justify-content: center;">
+                            <div style="display: flex;flex-direction: row;align-items: center;">
+                                <p style="margin: 5px;">城镇职工基本养老保险累计欠缴金额:</p>
+                                <input type="number" name="unpaid_social_ins_s0110" placeholder="请输入">
+                            </div>
+                            <div style="display: flex;flex-direction: row;align-items: center;">
+                                <p style="margin: 5px;">失业保险累计欠缴金额:</p>
+                                <input type="number" name="unpaid_social_ins_s0210" placeholder="请输入">
+                            </div>
+                            <div style="display: flex;flex-direction: row;align-items: center;">
+                                <p style="margin: 5px;">职工基本医疗保险累计欠缴金额:</p>
+                                <input type="number" name="unpaid_social_ins_s0310" placeholder="请输入">
+                            </div>
+                            <div style="display: flex;flex-direction: row;align-items: center;">
+                                <p style="margin: 5px;">工伤保险累计欠缴金额:</p>
+                                <input type="number" name="unpaid_social_ins_s0410" placeholder="请输入">
+                            </div>
+                            <div style="display: flex;flex-direction: row;align-items: center;">
+                                <p style="margin: 5px;">生育保险累计欠缴金额:</p>
+                                <input type="number" name="unpaid_social_ins_s0510" placeholder="请输入">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
