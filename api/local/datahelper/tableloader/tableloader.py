@@ -71,3 +71,6 @@ class TableLoader:
         """
         value = 0
         return value
+
+    def can_solve_the_unaccept_value(self, segment, value):
+        return True

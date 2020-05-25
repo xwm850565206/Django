@@ -80,4 +80,5 @@ class FCMComputer:
 
 if __name__ == '__main__':
     computer = FCMComputer()
-    print(computer.fcm_points['target_strength'].toString())
+    res = computer.compute({'xzbz1': None}, computer.data_map_helper.data_loader.company_list[0])
+    print(json.dumps(res, ensure_ascii=False, indent=4))

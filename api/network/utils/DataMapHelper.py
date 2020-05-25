@@ -5,9 +5,7 @@ import json
 import numpy as np
 
 
-
 class DataMapHelper:
-
     data_map_helper = None
 
     def __init__(self):
@@ -17,7 +15,8 @@ class DataMapHelper:
         try:
             self.data_loader = DataLoader.getInstance()
         except ValueError:
-            self.data_loader = DataLoader.createInstance(is_init_dic=True, prefix=st.raw_data_path, filter_func='minmaxscale')
+            self.data_loader = DataLoader.createInstance(is_init_dic=True, prefix=st.raw_data_path,
+                                                         filter_func='minmaxscale')
 
         self.not_origin_segment_info = self.__generate_not_origin_segment_info()
 
@@ -77,6 +76,8 @@ class DataMapHelper:
         # else:
         #     raise ValueError(usefunc + 'is not support now')
         for key in data_dic:
+            if data_dic[key] is None:
+                data_dic[key] = self.solve_unaccept_value(key, data_dic[key])
             data_dic[key] = np.squeeze(self
                                        .data_loader
                                        .data_filter
@@ -100,12 +101,18 @@ class DataMapHelper:
         :return:
         """
         not_origin_segment_info = {
-            'inv': [x+'占比' for x in self.data_loader.data_filter.init_dic['invtype']],
-            'xzbz': ['是否参保:'+x for x in self.data_loader.data_filter.init_dic['xzbzmc']],
+            'inv': [x + '占比' for x in self.data_loader.data_filter.init_dic['invtype']],
+            'xzbz': ['是否参保:' + x for x in self.data_loader.data_filter.init_dic['xzbzmc']],
             'defendant_num': '成为被告次数',
         }
 
         return not_origin_segment_info
+
+    def solve_unaccept_value(self, segment, value):
+        for tableloader in self.data_loader.loader:
+            if tableloader.can_solve_the_unaccept_value(segment, value):
+                return tableloader.solve_unaccept_value(segment, value)
+        return None
 
 
 if __name__ == '__main__':

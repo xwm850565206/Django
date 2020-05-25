@@ -45,3 +45,8 @@ class QualityCheckLoader(TableLoader):
         if cnt != 0:
             self.avg_percent = sum_percent / cnt
             self.avg_percent = round(self.avg_percent, 4)
+
+    def can_solve_the_unaccept_value(self, segment, value):
+        if segment == 'passpercent':
+            return True
+        return False

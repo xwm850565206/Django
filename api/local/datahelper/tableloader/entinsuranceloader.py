@@ -54,10 +54,15 @@ class EntInsuranceLoader(TableLoader):
 
     def solve_unaccept_value(self, value, key):
 
-        if key == 'xzbz':
+        if key.startswith('xzbz'):
             value = 0
         else:
             value = super().solve_unaccept_value(value, key)
 
         return value
+
+    def can_solve_the_unaccept_value(self, segment, value):
+        if segment.startswith('xzbz'):
+            return True
+        return False
 
