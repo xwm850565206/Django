@@ -23,30 +23,34 @@ def conditionSearch(conditions):
     # print("========", conditions, "==========")
 
     # 币种金额处理 汇率euro：7.6324  dollar：7.0215
-    if conditions['regcapcur_type'] == 'money_dollar':
+    regcapcur_type = conditions.pop('regcapcur_type')
+    if regcapcur_type == 'money_dollar':
         conditions['regcapcur'] = int(conditions['regcapcur'] * 7.0215)
-    elif conditions['regcapcur_type'] == 'money_euro':
+    elif regcapcur_type == 'money_euro':
         conditions['regcapcur'] = int(conditions['regcapcur'] * 7.6324)
     else:
         pass
 
-    if conditions['investnum_type'] == 'money_dollar':
+    investnum_type = conditions.pop('investnum_type')
+    if investnum_type == 'money_dollar':
         conditions['investnum'] = int(conditions['investnum'] * 7.0215)
-    elif conditions['investnum_type'] == 'money_euro':
+    elif investnum_type == 'money_euro':
         conditions['investnum'] = int(conditions['investnum'] * 7.6324)
     else:
         pass
 
-    if conditions['regcap_type'] == 'money_dollar':
+    regcap_type = conditions.pop('regcap_type')
+    if regcap_type == 'money_dollar':
         conditions['regcap'] = int(conditions['regcap'] * 7.0215)
-    elif conditions['regcap_type'] == 'money_euro':
+    elif regcap_type == 'money_euro':
         conditions['regcap'] = int(conditions['regcap'] * 7.6324)
     else:
         pass
 
-    if conditions['money_type_taxes'] == 'money_dollar':
+    money_type_taxes = conditions.pop('money_type_taxes')
+    if money_type_taxes == 'money_dollar':
         conditions['taxunpaidnum'] = int(conditions['taxunpaidnum'] * 7.0215)
-    elif conditions['money_type_taxes'] == 'money_euro':
+    elif money_type_taxes == 'money_euro':
         conditions['taxunpaidnum'] = int(conditions['taxunpaidnum'] * 7.6324)
     else:
         pass
@@ -71,6 +75,8 @@ def conditionSearch(conditions):
     # 产品通过率处理
     conditions['passpercent'] = conditions['passpercent'] / 100
 
+    # conditions在这里拿到
+    print("=========conditions============", conditions)
     print("========", f.getCompanyLabel(conditions, company_name), "==========")
 
     pass
