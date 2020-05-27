@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+import Django.IOProcess as iop
 
 def hello(request):
     # 通过给定context确定页面的初始值
@@ -13,12 +13,14 @@ def name_submit(request):
     # 在此处拿到company_name 进行相关检索分类
     print("===========", company_name, "================")
     context = {'result': company_name}
+    iop.fullNameSearch(company_name)
     return render(request, "index.html", context)
 
 
 def condition_submit(request):
     # 在此处拿到条件检索的输入 进行相关检索分类
-    check_info = request.POST['product_check_info']
-    print("============", check_info, "==================")
+    conditions = request.POST.dict()
+    # print("============", conditions, "==================")
+    iop.conditionSearch(conditions)
     return render(request, "index.html")
     pass

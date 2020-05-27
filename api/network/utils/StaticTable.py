@@ -1,10 +1,10 @@
 from api.local.datahelper import Utils
 
 # fcm路径
-fcm_point_dir = 'fcm_points/'
+fcm_point_dir = 'F:/CodeFiles/Pycharm Projects/Django/api/network/utils/fcm_points/'
 
 # 数据路径
-raw_data_path = 'C:/Users/bullypaulo/Desktop/2020服务外包大赛/聚类/local/datahelper/'
+raw_data_path = 'F:/CodeFiles/Pycharm Projects/Django/api/local/datahelper/'
 
 # 层次枚举
 belong_list = ["target_credit", "target_technique", "target_construction", "target_comsize", "target_strength",
