@@ -51,6 +51,15 @@ class IAnswer:
         """
         raise NotImplementedError
 
+    def solve_unaccept_value(self, segment, value):
+        """
+        处理异常字段
+        :param segment:
+        :param value:
+        :return:
+        """
+        raise NotImplementedError
+
     @staticmethod
     def getInstance():
         """

@@ -124,7 +124,8 @@ if __name__ == '__main__':
     测试
     """
     instance = DataMapHelper.getInstance()
-    print(instance.construction_description('构成3'))
+    tmp = instance.rescaled_data({'passpercent': 0.33}, 'minmaxscale')
+    print(tmp)
     # print(instance.alreadyInDataBase('f41f792303bd7185258ff937ca369bd8'))
     # print(instance.alreadyInDataBase("1234"))
     # print(instance.getAllSegmentName())
