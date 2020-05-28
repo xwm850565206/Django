@@ -19,6 +19,7 @@ class DataMapHelper:
                                                          filter_func='minmaxscale')
 
         self.not_origin_segment_info = self.__generate_not_origin_segment_info()
+        self.construction_label_description = json.load(open(st.construction_discription_path, 'r', encoding='utf-8'))
 
     @staticmethod
     def getInstance():
@@ -114,13 +115,16 @@ class DataMapHelper:
                 return tableloader.solve_unaccept_value(segment, value)
         return None
 
+    def construction_description(self, label):
+        return self.construction_label_description[label]
+
 
 if __name__ == '__main__':
     """
     测试
     """
     instance = DataMapHelper.getInstance()
-    print(instance.get_segment_input_content('enttype'))
+    print(instance.construction_description('构成3'))
     # print(instance.alreadyInDataBase('f41f792303bd7185258ff937ca369bd8'))
     # print(instance.alreadyInDataBase("1234"))
     # print(instance.getAllSegmentName())
