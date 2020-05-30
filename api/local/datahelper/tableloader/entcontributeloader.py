@@ -90,3 +90,10 @@ class EntContributeLoader(TableLoader):
             value = super().solve_unaccept_value(value, key)
 
         return value
+
+    def can_solve_the_unaccept_value(self, segment, value):
+        if segment == 'subconam':
+            return True
+        if segment == 'sum_conam':
+            return True
+        return False

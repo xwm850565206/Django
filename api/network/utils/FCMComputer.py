@@ -74,10 +74,20 @@ class FCMComputer:
 
         labels = {}
         for belong in belong_dic:
-            labels[belong] = (self.fcm_points[belong].getLabel(belong_dic[belong]))
+            labels[belong] = self.fcm_points[belong].getLabel(belong_dic[belong])
+        labels = self.__describe(labels)
         return labels
+
+    def __describe(self, labels):
+
+        if isinstance(labels, dict):
+            labels['construction_descrption'] = self.data_map_helper.construction_description(labels['target_construction'])
+            return labels
+        else:
+            raise ValueError('need dic type')
 
 
 if __name__ == '__main__':
     computer = FCMComputer()
-    print(computer.fcm_points['target_strength'].toString())
+    res = computer.compute({}, computer.data_map_helper.data_loader.company_list[0])
+    print(json.dumps(res, ensure_ascii=False, indent=4))
