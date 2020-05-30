@@ -7,7 +7,7 @@ def fullNameSearch(name):
     f = FCMAnswer.getInstance()
     conditons = {}
     print("======================", f.getCompanyLabel(conditons, name), "==============")
-    pass
+    return f.getCompanyLabel(conditons, name)
 
 
 def solve_regcapcur(conditions):
@@ -80,8 +80,14 @@ def solve_creditgrade(conditions):
 # 在这里拿到条件检索的 key:value
 def conditionSearch(conditions):
     f = FCMAnswer.getInstance()
-    company_name = conditions.pop('company_name')
-    conditions.pop('csrfmiddlewaretoken')
+    if 'company_name' in conditions:
+        company_name = conditions.pop('company_name')
+    else:
+        company_name = ""
+
+    if 'csrfmiddlewaretoken' in conditions:
+        conditions.pop('csrfmiddlewaretoken')
+
     # 空字段用处理
     for (key, value) in conditions.items():
         if len(value) == 0:
@@ -106,5 +112,4 @@ def conditionSearch(conditions):
     # conditions在这里拿到
     print("=========conditions============", conditions)
     print("========", f.getCompanyLabel(conditions, company_name), "==========")
-
-    pass
+    return f.getCompanyLabel(conditions, company_name)

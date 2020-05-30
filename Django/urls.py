@@ -20,6 +20,7 @@ from . import view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view.hello),
+    path('show', view.show),
     path('namesubmit', view.name_submit),
     path('conditionsubmit', view.condition_submit)
 ]
