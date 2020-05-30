@@ -26,3 +26,8 @@ class JnCreditInfoLoader(TableLoader):
             value = 2.5  # 平均等级
         return value
 
+    def can_solve_the_unaccept_value(self, segment, value):
+        if segment == 'credit_grade':
+            return True
+        return False
+

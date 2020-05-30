@@ -28,6 +28,9 @@ class FCMAnswer(IAnswer):
     def get_segment_input_content(self, segment_name):
         return self.data_map_helper.get_segment_input_content(segment_name)
 
+    def solve_unaccept_value(self, segment, value):
+        return self.data_map_helper.solve_unaccept_value(segment, value)
+
     fcm_answer = None
 
     @staticmethod
@@ -35,6 +38,7 @@ class FCMAnswer(IAnswer):
         if FCMAnswer.fcm_answer is None:
             FCMAnswer.fcm_answer = FCMAnswer()
         return FCMAnswer.fcm_answer
+
 
 if __name__ == "__main__":
     """

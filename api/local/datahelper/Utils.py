@@ -60,7 +60,7 @@ target_technique_weight = {
 
 # 公司构成字段
 target_construction = [
-    'enttype', 'entcat', 'industryphy',
+    # 'enttype', 'entcat', 'industryphy',
     'inv0', 'inv1', 'inv2', 'inv3', 'inv4', 'inv5', 'inv6', 'inv7', 'inv8', 'inv9', 'inv10', 'inv11', 'inv12',
     'inv13', 'inv14', 'inv15',
     'xzbz0', 'xzbz1', 'xzbz2', 'xzbz3', 'xzbz4', 'xzbz5', 'xzbz6', 'xzbz7', 'xzbz8',
@@ -68,8 +68,8 @@ target_construction = [
 ]
 
 target_construction_weight = {
-    'enttype': 1.0, 'entcat': 1.0, 'industryphy': 1.0,
-    'inv': 1/16, 'xzbz': 1/9, 'regcapcur': 1.0, 'investnum': 1.0
+    # 'enttype': 1.0, 'entcat': 1.0, 'industryphy': 1.0,
+    'inv': 1/16, 'xzbz': 1/9, 'regcapcur': 1.0, 'investnum': 2.0
 }
 
 # 公司规模字段
@@ -78,8 +78,8 @@ target_comsize = [
 ]
 
 target_comsize_weight = {
-    'regcap': 1.0, 'empnum': 1.0, 'estdate': 1.0, 'branchnum': 0.5, 'shopnum': 0.5,
-    'qcwynum': 0.33, 'zhycnum': 0.33, 'zlzpnum': 0.33
+    'regcap': 1.0, 'empnum': 1.0, 'estdate': 1.0, 'branchnum': 10, 'shopnum': 5,
+    'qcwynum': 3.3 / 2.0, 'zhycnum': 3.3 / 2.0, 'zlzpnum': 3.3 / 2.0
 }
 
 # 公司实力字段
@@ -88,8 +88,8 @@ target_strength = [
 ]
 
 target_strength_weight = {
-    'bidnum': 10.0, 'qcwynum': 0.33, 'zhycnum': 0.33, 'zlzpnum': 0.33,
-    'is_infoa': 100.0, 'is_infob': 100.0, 'passpercent': 1.0
+    'bidnum': 5.0, 'qcwynum': 0.33, 'zhycnum': 0.33, 'zlzpnum': 0.33,
+    'is_infoa': 20.0, 'is_infob': 20.0, 'passpercent': 1.0
 }
 
 # 公司稳定字段 企业年报对外担保还未添加 todo
@@ -226,12 +226,3 @@ def get_target_segment_data(dataloader, target_name):
 
     return data, target_set
 
-
-if __name__ == '__main__':
-    a = [[1, 2, 3], [4, 5, 6]]
-    a = np.array(a)
-    b = [a[:, 0], a[:, 1], a[:, 2]]
-    b = np.array(b)
-    print(b)
-    b = b.T
-    print(b)

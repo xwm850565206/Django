@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import Django.IOProcess as iop
+from api.network.FCMAnswer import FCMAnswer
+
+answer = FCMAnswer.getInstance()
 
 def hello(request):
     # 通过给定context确定页面的初始值

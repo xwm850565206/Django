@@ -114,3 +114,19 @@ class CompanyInfoLoader(TableLoader):
             value = super().solve_unaccept_value(value, key)
 
         return value
+
+    def can_solve_the_unaccept_value(self, segment, value):
+
+        if segment == 'regcapcur':
+            return True
+        if segment == 'regcap':
+            return True
+        if segment == 'entstatus':
+            return True
+        if segment == 'enttype':
+            return True
+        if segment == 'entcat':
+            return True
+        if segment == 'industryphy':
+            return True
+        return False
