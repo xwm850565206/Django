@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import Django.IOProcess as iop
 
+
 def hello(request):
     # 通过给定context确定页面的初始值
     # context = {'default_mode': True}
@@ -24,3 +25,7 @@ def condition_submit(request):
     iop.conditionSearch(conditions)
     return render(request, "index.html")
     pass
+
+
+def show(request):
+    return render(request, "show.html")
