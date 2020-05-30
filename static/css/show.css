@@ -25,48 +25,64 @@
     font-weight: bold;
     border: solid 3px #395c98;
     position: relative;
-    top: 190px;
+    top: 220px;
     left: 200px;
 }
 
 .label_compo1 {
-    width: 140px;
-    height: 30px;
+    width: 240px;
+    height: 40px;
+    font-size: 14px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #cfa575;
     border-radius: 8px;
     position: relative;
     top: 30px;
-    left: 100px;
+    left: 60px;
 }
 
 .label_compo2 {
-    width: 140px;
-    height: 30px;
+    width: 240px;
+    height: 40px;
+    font-size: 14px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #cfa575;
     border-radius: 8px;
     position: relative;
-    top: 100px;
+    top: 90px;
+    left: -80px;
 }
 
 .label_compo3 {
-    width: 140px;
-    height: 30px;
+    width: 240px;
+    height: 40px;
+    font-size: 14px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #cfa575;
     border-radius: 8px;
     position: relative;
-    top: 160px;
-    left: 40px;
+    top: 130px;
+    left: -80px;
+}
+
+.label_compo4 {
+    width: 240px;
+    height: 40px;
+    font-size: 14px;
+    text-align: center;
+    border: solid 2px #cfa575;
+    border-radius: 8px;
+    position: relative;
+    top: 180px;
+    left: 60px;
 }
 
 .line1 {
     position: relative;
-    top: -35px;
+    top: -100px;
     left: 160px;
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
     box-sizing: border-box;
     /*border:1px solid #333;*/
     background: linear-gradient(60deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
@@ -74,32 +90,42 @@
 
 .line2 {
     position: relative;
-    left: 140px;
-    top: -60px;
-    width: 60px;
-    height: 60px;
+    left: 165px;
+    top: -120px;
+    width: 36px;
+    height: 36px;
     box-sizing: border-box;
-    background: linear-gradient(20deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
+    background: linear-gradient(45deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
 }
 
 .line3 {
     position: relative;
-    left: 180px;
-    top: -70px;
-    width: 70px;
-    height: 70px;
+    left: 165px;
+    top: -120px;
+    width: 36px;
+    height: 36px;
     box-sizing: border-box;
-    background: linear-gradient(140deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
+    background: linear-gradient(-45deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
 }
 
 .line4 {
     position: relative;
-    left: 280px;
-    top: -180px;
+    left: 285px;
+    top: -190px;
     width: 95px;
     height: 95px;
     box-sizing: border-box;
-    background: linear-gradient(20deg, transparent 49.5%, #fac66c 49.5%, #fac66c 50.5%, transparent 50.5%);
+    background: linear-gradient(12deg, transparent 49.5%, #fac66c 49.5%, #fac66c 50.5%, transparent 50.5%);
+}
+
+.line5 {
+    position: relative;
+    left: 160px;
+    top: -235px;
+    width: 95px;
+    height: 95px;
+    box-sizing: border-box;
+    background: linear-gradient(-60deg, transparent 49.5%, #449dfa 49.5%, #449dfa 50.5%, transparent 50.5%);
 }
 
 .company_name{
@@ -116,10 +142,10 @@
 }
 
 .label1 {
-    width: 140px;
-    height: 30px;
+    width: 170px;
+    height: 25px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #5ea162;
     border-radius: 8px;
     position: relative;
     top: 40px;
@@ -127,10 +153,10 @@
 }
 
 .label2 {
-    width: 140px;
-    height: 30px;
+    width: 170px;
+    height: 25px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #5ea162;
     border-radius: 8px;
     position: relative;
     top: 40px;
@@ -138,10 +164,10 @@
 }
 
 .label3 {
-    width: 140px;
-    height: 30px;
+    width: 170px;
+    height: 25px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #5ea162;
     border-radius: 8px;
     position: relative;
     top: 160px;
@@ -149,10 +175,10 @@
 }
 
 .label4 {
-    width: 140px;
-    height: 30px;
+    width: 170px;
+    height: 25px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #5ea162;
     border-radius: 8px;
     position: relative;
     top: 260px;
@@ -160,10 +186,10 @@
 }
 
 .label5 {
-    width: 140px;
-    height: 30px;
+    width: 170px;
+    height: 25px;
     text-align: center;
-    border: solid 2px #8d8d8d;
+    border: solid 2px #5ea162;
     border-radius: 8px;
     position: relative;
     top: 280px;
@@ -173,9 +199,9 @@
 .m_line1 {
     position: relative;
     left: 60px;
-    top: -90px;
-    width: 130px;
-    height: 130px;
+    top: -75px;
+    width: 135px;
+    height: 135px;
     box-sizing: border-box;
     background: linear-gradient(80deg, transparent 49.5%, #fa4661 49.5%, #fa4661 50.5%, transparent 50.5%);
 }
@@ -183,7 +209,7 @@
 .m_line2 {
     position: relative;
     left: 200px;
-    top: -190px;
+    top: -185px;
     width: 110px;
     height: 110px;
     box-sizing: border-box;
@@ -192,20 +218,20 @@
 
 .m_line3 {
     position: relative;
-    left: 200px;
-    top: -220px;
-    width: 100px;
-    height: 100px;
+    left: 205px;
+    top: -210px;
+    width: 95px;
+    height: 95px;
     box-sizing: border-box;
     background: linear-gradient(10deg, transparent 49.5%, #fa4661 49.5%, #fa4661 50.5%, transparent 50.5%);
 }
 
 .m_line4 {
     position: relative;
-    left: 140px;
-    top: -270px;
-    width: 130px;
-    height: 130px;
+    left: 160px;
+    top: -245px;
+    width: 110px;
+    height: 110px;
     box-sizing: border-box;
     background: linear-gradient(50deg, transparent 49.5%, #fa4661 49.5%, #fa4661 50.5%, transparent 50.5%);
 }
@@ -213,9 +239,9 @@
 .m_line5 {
     position: relative;
     left: 30px;
-    top: -400px;
-    width: 180px;
-    height: 180px;
+    top: -355px;
+    width: 160px;
+    height: 160px;
     box-sizing: border-box;
     background: linear-gradient(100deg, transparent 49.5%, #fa4661 49.5%, #fa4661 50.5%, transparent 50.5%);
 }
