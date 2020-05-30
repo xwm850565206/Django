@@ -51,6 +51,13 @@ class IAnswer:
         """
         raise NotImplementedError
 
+    def getCompanyLabelFromExecel(self, execel):
+        """
+        批量操作，传入符合要求的execel，然后回传一个result.txt
+        :return:
+        """
+        raise NotImplementedError
+
     def solve_unaccept_value(self, segment, value):
         """
         处理异常字段

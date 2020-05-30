@@ -1,9 +1,14 @@
+from openpyxl import Workbook
+
 from api.network.utils.DataMapHelper import DataMapHelper
 from api.network.utils.FCMComputer import FCMComputer
 from api.network.IAnswer import IAnswer
 
+import openpyxl
+
 
 class FCMAnswer(IAnswer):
+    fcm_answer = None
 
     def __init__(self):
         super().__init__()
@@ -31,7 +36,27 @@ class FCMAnswer(IAnswer):
     def solve_unaccept_value(self, segment, value):
         return self.data_map_helper.solve_unaccept_value(segment, value)
 
-    fcm_answer = None
+    def getCompanyLabelFromExecel(self, execel):
+
+        if not isinstance(execel, Workbook):
+            raise ValueError("输入的参数不对")
+
+        label_dic = {}
+        for sheet in execel:
+            for row in range(1, sheet.rows):
+                data_dic = {}
+                company_name = sheet.cell(row=row, col=0)
+                for col in range(1, sheet.columns):
+                    try:
+                        data_dic[sheet.cell(row=0, col=col)] = float(sheet.cell(row=row, col=col))
+                    except:
+                        raise ValueError("execel文件格式错误")
+                try:
+                    label = self.getCompanyLabel(data_dic, company_name)
+                    label_dic[company_name] = label
+                except:
+                    raise ValueError("execel文件格式错误")
+        return label_dic
 
     @staticmethod
     def getInstance():
