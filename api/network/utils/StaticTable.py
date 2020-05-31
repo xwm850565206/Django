@@ -1,7 +1,7 @@
 from api.local.datahelper import Utils
 
 # 文件运行路径
-project_root = ''
+project_root = '../../'
 
 # fcm路径
 

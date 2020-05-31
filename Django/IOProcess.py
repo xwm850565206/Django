@@ -5,6 +5,9 @@ from api.network.IAnswer import IAnswer
 # 在这里拿到名称检索的name
 def fullNameSearch(name):
     f = FCMAnswer.getInstance()
+    if not f.alreadyInDataBase(name):
+        return None
+
     conditons = {}
     print("======================", f.getCompanyLabel(conditons, name), "==============")
     return f.getCompanyLabel(conditons, name)

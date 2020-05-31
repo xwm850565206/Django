@@ -51,12 +51,23 @@ class IAnswer:
         """
         raise NotImplementedError
 
+    def alreadyInDataBase(self, company_name):
+        """
+        判断传入的公司名称是否在数据库中已经存在
+        :param company_name: 公司名称
+        :return:bool值 公司是否存在
+        """
+        raise NotImplementedError
+
     def getCompanyLabelFromExecel(self, execel):
         """
         批量操作，传入符合要求的execel，然后回传一个result.txt
+        :param execel: execel的路径
         :return:
         """
         raise NotImplementedError
+
+
 
     def solve_unaccept_value(self, segment, value):
         """
