@@ -69,6 +69,7 @@ def name_submit(request):
 
     return render(request, "show.html", context)
 
+
 def condition_submit(request):
     # 在此处拿到条件检索的输入 进行相关检索分类
     conditions = request.POST.dict()
@@ -153,8 +154,9 @@ def fileUpload(request):
                 f.write(chunk)
 
         # destination 为上传的路径名称 （绝对路径）
-<<<<<<< HEAD
+        try:
+            destination = iop.mutiSearch(destination)  # 批量查询操作
+        except ValueError:  # 这块有时间应该告诉详细的错误地方
+            return HttpResponse("格式错误")
+        
         return HttpResponse("上传成功！")
-=======
-        return HttpResponse("上传成功！")
->>>>>>> refs/remotes/origin/master

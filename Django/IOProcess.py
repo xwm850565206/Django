@@ -1,3 +1,5 @@
+import json
+
 from api.network.FCMAnswer import FCMAnswer
 from api.network.IAnswer import IAnswer
 
@@ -116,3 +118,12 @@ def conditionSearch(conditions):
     print("=========conditions============", conditions)
     print("========", f.getCompanyLabel(conditions, company_name), "==========")
     return f.getCompanyLabel(conditions, company_name)
+
+
+def mutiSearch(filename):
+    instance = FCMAnswer.getInstance()
+    label_dic = instance.getCompanyLabelFromExecel(filename)
+    destination = 'mutilabel.txt'
+    with open(destination, 'w', encoding='utf-8') as f:
+        f.write(json.dumps(label_dic, ensure_ascii=False, indent=4))
+    return destination
