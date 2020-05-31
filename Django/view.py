@@ -158,5 +158,9 @@ def fileUpload(request):
             destination = iop.mutiSearch(destination)  # 批量查询操作
         except ValueError:  # 这块有时间应该告诉详细的错误地方
             return HttpResponse("格式错误")
-        
-        return HttpResponse("上传成功！")
+
+        with open(destination, 'rb') as df:
+            response = HttpResponse(df)
+            response['Content-Type'] = 'application/octet-stream'
+            response['Content-Disposition'] = 'attachment;filename="result.txt"'
+            return response

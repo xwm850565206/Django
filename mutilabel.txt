@@ -1,0 +1,649 @@
+{
+    "79cb386e0857e41f1468e9d01a754c67": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "36447a9f6b53d3e4bbfb3f5670ef17f0": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "aea25bbf8295f693f7000ad5c982a1a7": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "较差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "80055c5357de53f3a6fb09b625f4332f": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "345f116687149e878863a99220549dfa": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "95d248bb2b801306b4413cadca027108": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较不稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "f0fa88f9081f15cb4ab8305205b8cb06": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "较稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "d06323c717262a7c26a7530e08e18412": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "c2d5c96f98d9119cbb18947f4e299bed": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "f611c80c985b2976fa3318ac068fb7cc": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "3dc5348432e717a488fbecb3bdfd90d7": {
+        "target_construction": "构成3",
+        "target_comsize": "小",
+        "target_stable": "稳定",
+        "target_strength": "弱",
+        "target_credit": "较差",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    },
+    "null": {
+        "target_strength": "弱",
+        "target_stable": "较稳定",
+        "target_comsize": "小",
+        "target_construction": "构成3",
+        "target_technique": "差",
+        "construction_descrption": {
+            "enttype": [
+                [
+                    "有限责任公司(自然人投资或控股)",
+                    57100
+                ],
+                [
+                    "有限责任公司(自然人独资)",
+                    45000
+                ]
+            ],
+            "entstatus": [
+                [
+                    "在营（开业）企业",
+                    107005
+                ],
+                [
+                    "吊销企业",
+                    32917
+                ]
+            ],
+            "entcat": [
+                [
+                    "私营企业",
+                    110456
+                ]
+            ],
+            "industryphy": [
+                [
+                    "批发和零售业",
+                    52552
+                ],
+                [
+                    "其他",
+                    28302
+                ],
+                [
+                    "租赁和商务服务业",
+                    16154
+                ],
+                [
+                    "信息传输、软件和信息技术服务业",
+                    8165
+                ]
+            ]
+        }
+    }
+}
