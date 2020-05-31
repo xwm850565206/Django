@@ -51,7 +51,7 @@ class DataMapHelper:
         for non_origin_segment in st.not_origin_segments:
             if non_origin_segment.endswith('*'):
                 prefix = non_origin_segment.replace('*', '')
-                if segment.startswith(prefix):
+                if segment.startswith(prefix) and segment != 'investnum':
                     return self.not_origin_segment_info[prefix][int(segment.replace(prefix, ''))]
             elif segment == non_origin_segment:
                 return self.not_origin_segment_info[segment]
@@ -124,8 +124,12 @@ if __name__ == '__main__':
     测试
     """
     instance = DataMapHelper.getInstance()
-    tmp = instance.rescaled_data({'passpercent': 0.33}, 'minmaxscale')
-    print(tmp)
+    data_dic = {}
+    for segment in instance.data_loader.segment_list:
+        data_dic[segment] = instance.getSegmentExplain(segment)
+
+    print(json.dumps(data_dic, ensure_ascii=False, indent=4))
+
     # print(instance.alreadyInDataBase('f41f792303bd7185258ff937ca369bd8'))
     # print(instance.alreadyInDataBase("1234"))
     # print(instance.getAllSegmentName())
