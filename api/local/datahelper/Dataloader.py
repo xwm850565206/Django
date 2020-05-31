@@ -1,5 +1,3 @@
-import json
-
 import numpy as np
 from api.local.datahelper import Datainfo
 from api.local.datahelper import Datafilter
@@ -234,7 +232,7 @@ if __name__ == '__main__':
     # print(sub_segment_name)
     # print(data)
 
-    print(json.dumps(dataloader.segment_list, ensure_ascii=False, indent=4))
+    print(dataloader.segment_list)
 
     # print(venv.data)
 
