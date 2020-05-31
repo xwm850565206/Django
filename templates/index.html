@@ -15,6 +15,7 @@
     <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
         <p class="name_search" id="search_mode1" onclick="searchModeChange(this.id)">名称检索分类</p>
         <p class="condition_search" id="search_mode2" onclick="searchModeChange(this.id)">条件检索分类</p>
+        <p class="batch_search" id="search_mode3" onclick="searchModeChange(this.id)">批量检索</p>
     </div>
     <br>
 
@@ -25,7 +26,16 @@
             <input type="submit" class="input_submit" value="提交">
         </form>
     </div>
-    <div>{{ result }}</div>
+
+    <div id="batch_form_block" style="display: none;">
+        <form class="batch_form" action="/upload" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="display: flex;flex-direction: row;align-items: center;">
+                <input style="border-width: 2px;border-style: solid;border-color: #8fc3fa" type="file" name="batchFile">
+                <input type="submit" value="上传">
+            </div>
+        </form>
+    </div>
 
     <div id="condition_form_block" style="display: none;">
         <form class="condition_form" action="/conditionsubmit" method="post">
