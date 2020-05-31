@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import Django.IOProcess as iop
 from api.network.FCMAnswer import FCMAnswer
+import os, sys
 
 answer = FCMAnswer.getInstance()
 
@@ -136,3 +137,20 @@ def show(request):
     context['label5'] = "标签字段2"
     return render(request, "show.html", context)
 
+
+def fileUpload(request):
+    HttpResponse("上传成功！")
+    File = request.FILES.get("batchFile", None)
+    if File is None:
+        return HttpResponse("no files for upload!")
+    else:
+        destination = os.path.join(os.getcwd(), 'file', File.name)
+        print(destination, "=============")
+        # 打开特定的文件进行二进制的写操作;
+        with open(destination, 'wb+') as f:
+            # 分块写入文件;
+            for chunk in File.chunks():
+                f.write(chunk)
+
+        # destination 为上传的路径名称 （绝对路径）
+        return HttpResponse("上传成功！")
