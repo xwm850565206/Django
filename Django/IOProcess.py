@@ -123,6 +123,15 @@ def conditionSearch(conditions):
 def mutiSearch(filename):
     instance = FCMAnswer.getInstance()
     label_dic = instance.getCompanyLabelFromExecel(filename)
+    for company in label_dic:
+        construction_label = label_dic[company]['construction_descrption']
+        for key in construction_label:
+            for data_list in construction_label[key]:
+                try:
+                    data_list.pop(1)
+                except:
+                    continue
+
     destination = 'mutilabel.txt'
     with open(destination, 'w', encoding='utf-8') as f:
         f.write(json.dumps(label_dic, ensure_ascii=False, indent=4))
