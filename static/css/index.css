@@ -14,6 +14,25 @@
     cursor: pointer;
 }
 
+.batch_search {
+    margin: 10px;
+    font-size: 18px;
+    color: #B5B5B5;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#batch_form_block{
+    width: 100%;
+}
+
+.batch_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .default_form {
     display: flex;
     flex-direction: row;

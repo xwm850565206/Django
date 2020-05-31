@@ -153,4 +153,8 @@ def fileUpload(request):
                 f.write(chunk)
 
         # destination 为上传的路径名称 （绝对路径）
+<<<<<<< HEAD
         return HttpResponse("上传成功！")
+=======
+        return HttpResponse("上传成功！")
+>>>>>>> refs/remotes/origin/master
